@@ -1,0 +1,22 @@
+{
+  "name": "kirbyrtddgamer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glazelf/KirbyRTDDGamer.git"
+  },
+  "author": "Glaze",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/Glazelf/KirbyRTDDGamer/issues"
+  },
+  "homepage": "https://github.com/Glazelf/KirbyRTDDGamer#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
