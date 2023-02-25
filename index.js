@@ -3,14 +3,18 @@ const net = require("net");
 const readline = require('readline-sync');
 const config = require('./config.json');
 
-let allowedSubgames = ["crackityhack", "eggcatcher", "samuraikirby"];
-let subgameInput = readline.question(`Which subgame do you want to play?\nOptions: ${allowedSubgames.join(", ")}\n`);
-if (!allowedSubgames.includes(subgameInput)) return console.log("That subgame isn't available (yet)!");
-let difficultyInput = readline.question("What difficulty do you want to play?\nOptions: 1, 2, 3\n");
-
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 const port = config.port;
 const host = config.ip;
 const conn = net.createConnection(port, host);
 conn.setEncoding("utf-8"); // sends all commands as utf-8 (same as .encode())
+conn.write("detachController \r\n"); // detach from console
 
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+let allowedSubgames = ["crackityhack", "eggcatcher", "samuraikirby"];
+let fourDifficultySubgames = [];
+let maxDifficulty = 3; // Some subgames have 4 difficulty settings
+if (fourDifficultySubgames.includes(subgameInput)) maxDifficulty = 4;
+let subgameInput = readline.question(`Which subgame do you want to play?\nOptions: ${allowedSubgames.join(", ")}\n`);
+if (!allowedSubgames.includes(subgameInput)) return console.log("That subgame isn't available (yet)!");
+let difficultyInput = readline.question(`What difficulty do you want to play?\nOptions: 1-${maxDifficulty}\n`);
+if (difficultyInput < 1 || difficultyInput > maxDifficulty) return console.log("That difficulty isn't available for that subgame!");
