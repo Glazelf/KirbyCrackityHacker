@@ -14,11 +14,6 @@ async function KirbyRTDDGamer() {
     const conn = net.createConnection(port, host);
     conn.setEncoding("utf-8"); // sends all commands as utf-8 (same as .encode())
     conn.write("detachController \r\n"); // detach from console
-    await sleep(5000);
-    conn.write("detachController \r\n"); // detach from console
-    await sleep(5000);
-    conn.write("detachController \r\n"); // detach from console
-    console.log(conn)
 
     let allowedSubgames = Object.keys(subgamesObject);
     let fourDifficultySubgames = [];
